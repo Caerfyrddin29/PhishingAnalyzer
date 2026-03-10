@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 350px;
+      min-height: 400px;
+      margin: 0;
+      padding: 16px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #0078d4;
+    }
+    
+    .header h1 {
+      margin: 0;
+      color: #0078d4;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .status {
+      background: white;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    
+    .status-indicator.online {
+      background: #107c10;
+    }
+    
+    .status-indicator.offline {
+      background: #d13438;
+    }
+    
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .btn {
+      padding: 12px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: #0078d4;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #106ebe;
+    }
+    
+    .btn-secondary {
+      background: #f3f2f1;
+      color: #323130;
+      border: 1px solid #d2d0ce;
+    }
+    
+    .btn-secondary:hover {
+      background: #edebe9;
+    }
+    
+    .recent-analyses {
+      margin-top: 20px;
+    }
+    
+    .recent-analyses h3 {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+      color: #323130;
+    }
+    
+    .analysis-item {
+      background: white;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .analysis-score {
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+    
+    .score-low {
+      background: #d4edda;
+      color: #155724;
+    }
+    
+    .score-medium {
+      background: #fff3cd;
+      color: #856404;
+    }
+    
+    .score-high {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    
+    .score-critical {
+      background: #f5c6cb;
+      color: #721c24;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: #605e5c;
+    }
+    
+    .spinner {
+      border: 2px solid #f3f2f1;
+      border-top: 2px solid #0078d4;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 12px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🛡️ PhishAnalyzer</h1>
+  </div>
+  
+  <div class="status">
+    <div class="status-item">
+      <div>
+        <span class="status-indicator" id="apiStatus"></span>
+        API Server
+      </div>
+      <span id="apiStatusText">Checking...</span>
+    </div>
+    <div class="status-item">
+      <div>
+        <span class="status-indicator online"></span>
+        Extension
+      </div>
+      <span>Active</span>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <button class="btn btn-primary" id="analyzeCurrentBtn">
+      Analyze Current Email
+    </button>
+    <button class="btn btn-secondary" id="clearResultsBtn">
+      Clear Analysis History
+    </button>
+    <button class="btn btn-secondary" id="settingsBtn">
+      Settings
+    </button>
+  </div>
+  
+  <div class="recent-analyses">
+    <h3>Recent Analyses</h3>
+    <div id="recentAnalysesList">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Loading recent analyses...</p>
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
