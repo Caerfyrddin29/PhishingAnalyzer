@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PhishAnalyzer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 400px;
+            min-height: 500px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .current-tab {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .url-display {
+            background: rgba(255,255,255,0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            word-break: break-all;
+            margin-bottom: 1rem;
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .status.legitimate {
+            background: rgba(68, 255, 68, 0.2);
+            border: 1px solid rgba(68, 255, 68, 0.5);
+        }
+        
+        .status.suspicious {
+            background: rgba(255, 136, 0, 0.2);
+            border: 1px solid rgba(255, 136, 0, 0.5);
+        }
+        
+        .status.phishing {
+            background: rgba(255, 68, 68, 0.2);
+            border: 1px solid rgba(255, 68, 68, 0.5);
+        }
+        
+        .status-icon {
+            font-size: 1.5rem;
+        }
+        
+        .status-text {
+            flex: 1;
+            margin-left: 1rem;
+        }
+        
+        .risk-score {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .manual-analysis {
+            padding: 1.5rem;
+        }
+        
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .results {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .result-item {
+            background: rgba(255,255,255,0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-style: italic;
+        }
+        
+        .error {
+            background: rgba(255, 68, 68, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 68, 68, 0.5);
+        }
+        
+        .footer {
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">🛡️</div>
+        <div class="title">PhishAnalyzer v3.0</div>
+    </div>
+    
+    <div class="current-tab">
+        <div class="url-display" id="current-url">Loading...</div>
+        <div class="status" id="current-status">
+            <div class="status-icon">🔄</div>
+            <div class="status-text">Analyzing...</div>
+            <div class="risk-score">-</div>
+        </div>
+    </div>
+    
+    <div class="manual-analysis">
+        <div class="input-group">
+            <input type="url" id="url-input" placeholder="Enter URL to analyze...">
+        </div>
+        <button class="btn" id="analyze-btn">Analyze URL</button>
+    </div>
+    
+    <div class="results" id="results" style="display: none;">
+        <h3 style="margin-bottom: 1rem;">Recent Analyses</h3>
+        <div id="results-list"></div>
+    </div>
+    
+    <div class="footer">
+        Advanced ML-powered phishing detection
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
