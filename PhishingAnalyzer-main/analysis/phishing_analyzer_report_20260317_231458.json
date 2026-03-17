@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-03-17T23:14:58.155709",
+  "summary": {
+    "total_emails": 1,
+    "phishing_detected": 1,
+    "suspicious_ips": [
+      "192.168.1.1"
+    ],
+    "suspicious_urls": [
+      "http://192.168.1.1/paypal-verify",
+      "https://bit.ly/suspicious-link",
+      "bit.ly/suspicious-link"
+    ],
+    "suspicious_emails": [
+      "security@paypal.com"
+    ]
+  },
+  "results": [
+    {
+      "file": ".\\test_phishing_complete.eml",
+      "sender": "security@paypal.com",
+      "subject": "URGENT: Account Verification Required",
+      "risk_score": 64,
+      "risk_level": "HIGH",
+      "is_phishing": true,
+      "confidence": 0.64,
+      "timestamp": "2026-03-17T23:14:58.146201"
+    }
+  ]
+}
