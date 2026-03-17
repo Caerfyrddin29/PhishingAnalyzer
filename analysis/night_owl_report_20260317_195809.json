@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-03-17T19:58:09.908057",
+  "summary": {
+    "total_emails": 1,
+    "phishing_detected": 0,
+    "suspicious_ips": [],
+    "suspicious_urls": [],
+    "suspicious_emails": [
+      "support@github.com"
+    ]
+  },
+  "results": [
+    {
+      "file": "test_legitimate.eml",
+      "sender": "support@github.com",
+      "subject": "Your GitHub repository analysis",
+      "risk_score": 20,
+      "risk_level": "LOW",
+      "is_phishing": false,
+      "confidence": 0.2,
+      "timestamp": "2026-03-17T19:58:09.902267"
+    }
+  ]
+}

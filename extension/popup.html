@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishingAnalyzer Pro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="popup-container">
+        <div class="popup-header">
+            <h1>🛡️ PhishingAnalyzer Pro</h1>
+        </div>
+        
+        <div class="popup-content">
+            <button class="popup-analyze-btn" id="analyzeBtn">Analyze Current Page</button>
+            
+            <div id="status" class="popup-status" style="display: none;">
+                <div id="statusContent"></div>
+            </div>
+            
+            <div id="loading" class="popup-loading" style="display: none;">
+                <div class="loading-content">
+                    <div class="loading-text">Analyzing...</div>
+                    <div class="loading-subtext">Checking for phishing threats</div>
+                    <div class="popup-spinner"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="popup-footer">
+            Professional Email Security
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
