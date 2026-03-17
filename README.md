@@ -145,6 +145,10 @@ Visit `http://localhost:8000/docs` for interactive API documentation.
 
 ## Configuration
 
+### For IMAP Email Downloading (Optional)
+
+If you want to automatically download emails from Gmail/Outlook accounts via IMAP, configure:
+
 Edit `config/email_accounts.json` with your email credentials:
 
 ```json
@@ -160,6 +164,11 @@ Edit `config/email_accounts.json` with your email credentials:
   ]
 }
 ```
+
+**Note**: This is ONLY required for `email_downloader.py`. 
+- The Chrome Extension works without this configuration
+- Analyzing local .eml/.msg files works without this configuration
+- The API server works without this configuration
 
 ## Risk Scoring
 
